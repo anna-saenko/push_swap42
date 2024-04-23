@@ -24,6 +24,6 @@ typedef struct s_all
 	int		len_b;
 }	t_all;
 
-char	**parse_args(int argc, char **argv);
+void	check_args(int argc, char **argv);
 
 #endif
