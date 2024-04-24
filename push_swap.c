@@ -1,5 +1,3 @@
-#include "libft/ft_printf/ft_printf.h"
-#include "libft/libft.h"
 #include "push_swap.h"
 #include <stdio.h>
 
@@ -7,16 +5,16 @@ int	main(int argc, char **argv)
 {
 	t_stack *stack_a;
 	t_stack *stack_b;
-	char **args;
 
 	if (argc < 2)
 		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
-	args = parse_args(argc, argv);
-	for (int i = 0; i < argc; i++)
+	stack_a = check_args(argc, argv);
+	while (stack_a)
 	{
-		printf("%s\n", args[i]);
+		printf("%d\n", stack_a->value);
+		stack_a = stack_a->next;
 	}
 	return (0);
 }

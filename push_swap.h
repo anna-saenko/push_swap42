@@ -1,5 +1,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+#include "libft/ft_printf/ft_printf.h"
+#include "libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -8,10 +10,9 @@
 
 typedef struct s_stack
 {
+	int				value;
 	int				index;
-	int				flag;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }	t_stack;
 
 typedef struct s_all
@@ -24,6 +25,7 @@ typedef struct s_all
 	int		len_b;
 }	t_all;
 
-void	check_args(int argc, char **argv);
+char	**prepare_args(int argc, char **argv);
+t_stack	*check_args(int argc, char **argv);
 
 #endif

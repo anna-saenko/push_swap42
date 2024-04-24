@@ -43,24 +43,34 @@ static int	is_too_big(int num)
 	return (0);
 }
 
-void	check_args(int argc, char **argv)
+t_stack	*check_args(int argc, char **argv)
 {
 	char	**args;
-	long	temp;
+	long	num;
 	int		i;
-	int		j;
+	t_stack	*head;
 
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
 		args = argv;
 	i = 1;
-	j = 0;
 	while (i < argc)
 	{
-		temp = ft_atoi(args[i]);
-		if (!ft_isnum(args[i]) || is_too_big(temp) || is_double(temp, args, i))
+		num = ft_atoi(args[i]);
+		if (!ft_isnum(args[i]) || is_too_big(num) || is_double(num, args, i))
 			display_error();
+		else
+		{
+			head = (t_stack *)malloc(sizeof(t_stack));
+			head->value = num;
+			head->index = i;
+			if (i == argc - 1)
+				head->next = NULL;
+			else
+				head->next = head + 1;
+		}
 		i++;
 	}
+	return (head);
 }

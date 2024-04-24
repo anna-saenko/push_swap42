@@ -8,7 +8,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = push_swap.c \
+SRCS = push_swap.c	check_args.c \
 
 OBJ = $(SRCS:.c=.o)
 
