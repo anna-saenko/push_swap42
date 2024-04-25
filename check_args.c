@@ -25,11 +25,13 @@ static int	ft_isnum(char *arg)
 static int	is_double(int num, char **args, int i)
 {
 	int	j;
+	int	temp;
 
 	j = 1;
 	while (j < i)
 	{
-		if (num == ft_atoi(args[j]))
+		temp = ft_atoi(args[j]);
+		if (num == temp)
 			return (1);
 		j++;
 	}
@@ -42,35 +44,41 @@ static int	is_too_big(int num)
 		return (1);
 	return (0);
 }
-
-t_stack	*check_args(int argc, char **argv)
+char	**prepare_args(int argc, char **argv)
 {
 	char	**args;
-	long	num;
 	int		i;
-	t_stack	*head;
 
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
-		args = argv;
-	i = 1;
-	while (i < argc)
+	{
+		args = (char **)malloc(sizeof(char *) * (argc));
+		if (!args)
+			return (NULL);
+		i = 0;
+		while (i < argc - 1)
+		{
+			args[i] = ft_strdup(argv[i + 1]);
+			i++;
+		}
+		args[i] = NULL;
+	}
+	return (args);
+}
+void	check_args(int argc, char **argv)
+{
+	char	**args;
+	long	num;
+	int		i;
+
+	args = prepare_args(argc, argv);
+	i = 0;
+	while (args[i] != NULL)
 	{
 		num = ft_atoi(args[i]);
 		if (!ft_isnum(args[i]) || is_too_big(num) || is_double(num, args, i))
 			display_error();
-		else
-		{
-			head = (t_stack *)malloc(sizeof(t_stack));
-			head->value = num;
-			head->index = i;
-			if (i == argc - 1)
-				head->next = NULL;
-			else
-				head->next = head + 1;
-		}
 		i++;
 	}
-	return (head);
 }

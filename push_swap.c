@@ -3,18 +3,18 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
+	char	**args;
+	int		i;
 
-	if (argc < 2)
-		return (0);
-	stack_a = NULL;
-	stack_b = NULL;
-	stack_a = check_args(argc, argv);
-	while (stack_a)
+	i = 0;
+	check_args(argc, argv);
+	args = prepare_args(argc, argv);
+	while (args[i] != NULL)
 	{
-		printf("%d\n", stack_a->value);
-		stack_a = stack_a->next;
+		printf("%s\n", args[i]);
+		free(args[i]);
+		i++;
 	}
+	free(args);
 	return (0);
 }
