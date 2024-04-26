@@ -26,6 +26,7 @@ typedef struct s_all
 }	t_all;
 
 char	**prepare_args(int argc, char **argv);
+//check_args.c
 void	check_args(int argc, char **argv);
 
 #endif
