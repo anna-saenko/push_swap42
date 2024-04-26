@@ -15,18 +15,15 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-typedef struct s_all
-{
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	int		min_a;
-	int		median;
-	int		len_a;
-	int		len_b;
-}	t_all;
-
 char	**prepare_args(int argc, char **argv);
 //check_args.c
 void	check_args(int argc, char **argv);
+
+t_stack	*parse_args_to_linked_list(char **args);
+//free_funcs.c
+void	free_char_arr(char **arr);
+void	free_stack(t_stack *stack);
+//utils.c
+void	print_stack(t_stack *stack);
 
 #endif
