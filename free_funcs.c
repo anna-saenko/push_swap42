@@ -5,16 +5,12 @@ void	free_char_arr(char **arr)
 	unsigned	i;
 
 	if (arr == NULL)
-	{
 		return;
-	}
-
 	i = 0;
 	while(arr[i] != NULL)
 	{
 		free(arr[i++]);
 	}
-
 	free(arr);
 	arr = NULL;
 }

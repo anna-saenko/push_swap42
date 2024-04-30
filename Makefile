@@ -9,6 +9,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -O0 -DDEBUG
 
 SRCS = push_swap.c	check_args.c free_funcs.c	utils.c \
+		parse_args.c
 
 OBJ = $(SRCS:.c=.o)
 
