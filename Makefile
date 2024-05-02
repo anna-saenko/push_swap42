@@ -6,7 +6,7 @@
 #    By: asaenko <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/02 15:29:07 by asaenko           #+#    #+#              #
-#    Updated: 2024/05/02 15:34:21 by asaenko          ###   ########.fr        #
+#    Updated: 2024/05/02 15:41:33 by asaenko          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFLAGS = -Wall -Wextra -Werror -g -O0 -DDEBUG
 
 SRCS = push_swap.c	args_check.c free_funcs.c	utils.c \
 		args_parse.c	ops_push.c	ops_swap.c	ops_rotate.c \
-		ops_reverse.c
+		ops_reverse.c	sort.c
 
 OBJ = $(SRCS:.c=.o)
 

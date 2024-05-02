@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:29:21 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/02 15:29:22 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/02 15:42:12 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ int	main(int argc, char **argv)
 		{
 			printf("Stack is not sorted\n");
 		}
+		printf("Stack_a: %p\n", stack_a);
+		print_stack(stack_a);
+		sort_stack(&stack_a, &stack_b);
 		printf("Stack_a: %p\n", stack_a);
 		print_stack(stack_a);
 		free_stack(stack_a);

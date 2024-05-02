@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:08:13 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/02 12:42:52 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/02 15:38:24 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,23 @@ int is_sorted(t_stack *head)
 		current = current->next;
 	}
 	return 1;
+}
+
+int	stack_size(t_stack *head)
+{
+	t_stack	*current;
+	int		size;
+
+	size = 0;
+	if (head == NULL)
+	{
+		return 0;
+	}
+	current = head;
+	while (current != NULL)
+	{
+		size++;
+		current = current->next;
+	}
+	return size;
 }

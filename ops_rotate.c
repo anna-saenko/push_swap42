@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:28:51 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/02 15:32:25 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/02 15:49:29 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ void	rotate_nodes(t_stack **head)
 void	ra(t_stack **stack_a)
 {
 	rotate_nodes(stack_a);
-	ft_printf("ra\n");
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_stack **stack_b)
 {
 	rotate_nodes(stack_b);
-	ft_printf("rb\n");
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate_nodes(stack_a);
 	rotate_nodes(stack_b);
-	ft_printf("rr\n");
+	write(1, "rr\n", 3);
 }

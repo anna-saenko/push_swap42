@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:28:59 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/02 15:29:00 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/02 15:41:19 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	free_stack(t_stack *stack);
 //utils.c
 void	print_stack(t_stack *stack);
 int is_sorted(t_stack *head);
+int	stack_size(t_stack *head);
 //operations: push_ops.c swap_ops.c rotate_ops.c reverse_ops.c
 void	push_node(t_stack **head, t_stack *node);
 void	pb(t_stack **stack_a, t_stack **stack_b);
@@ -58,5 +59,8 @@ void	reverse_rotate_nodes(t_stack **head);
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
+
+void	sort_stack(t_stack **stack_a, t_stack **stack_b);
+void	sort_three(t_stack **stack_a);
 
 #endif
