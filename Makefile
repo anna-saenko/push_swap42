@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: asaenko <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/02 15:29:07 by asaenko           #+#    #+#              #
+#    Updated: 2024/05/02 15:34:21 by asaenko          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = push_swap
 
 LIBFTDIR = libft
@@ -8,9 +20,9 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -g -O0 -DDEBUG
 
-SRCS = push_swap.c	check_args.c free_funcs.c	utils.c \
-		parse_args.c	push_ops.c	swap_ops.c	rotate_ops.c \
-		reverse_ops.c
+SRCS = push_swap.c	args_check.c free_funcs.c	utils.c \
+		args_parse.c	ops_push.c	ops_swap.c	ops_rotate.c \
+		ops_reverse.c
 
 OBJ = $(SRCS:.c=.o)
 
