@@ -31,6 +31,7 @@ static t_stack	*create_node(int value, int index, t_stack* prev)
 	head = (t_stack *)malloc(sizeof(t_stack));
 	head->value = value;
 	head->index = index;
+	head->prev = prev;
 	head->next = NULL;
 	if (prev)
 	{
