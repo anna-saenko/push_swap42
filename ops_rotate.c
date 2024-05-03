@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:28:51 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/02 15:49:29 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/03 14:48:46 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 void	rotate_nodes(t_stack **head)
 {
 	t_stack	*tmp;
+	t_stack	*last;
 
 	if (!*head || !(*head)->next)
 		return ;
 	tmp = *head;
 	*head = (*head)->next;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = (*head)->prev;
-	(*head)->prev->next = NULL;
+	last = tmp;
+	while (last->next)
+		last = last->next;
+	last->next = tmp;
+	tmp->next = NULL;
+	tmp->prev = last;
 	(*head)->prev = NULL;
 }
 

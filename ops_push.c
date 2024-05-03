@@ -6,28 +6,29 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:27:53 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/02 15:50:50 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/03 14:01:31 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_node (t_stack **head, t_stack *node)
+void	push_node (t_stack **to, t_stack *from)
 {
-	t_stack	*tmp;
-
-	if (!*head)
-	{
-		*head = node;
+	if (!from)
 		return ;
-	}
-	tmp = *head;
-	while (tmp->next)
+	if (!*to)
 	{
-		tmp = tmp->next;
+		*to = from;
+		(*to)->next = NULL;
+		(*to)->prev = NULL;
 	}
-	tmp->next = node;
-	node->prev = tmp;
+	else
+	{
+		from->next = *to;
+		from->prev = NULL;
+		(*to)->prev = from;
+		*to = from;
+	}
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
