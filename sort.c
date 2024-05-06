@@ -208,7 +208,7 @@ void	sort_beyond_five(t_stack **stack_a, t_stack **stack_b)
 			ra(stack_a);
 		i++;
 	}
-	sort_three(stack_a, stack_size(*stack_a));
+	sort_five(stack_a, stack_b);
 	while (stack_size(*stack_b) > 0)
 	{
 		if ((*stack_b)->value == find_max(*stack_b))

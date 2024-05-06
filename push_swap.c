@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:29:21 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/06 12:35:39 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/06 17:29:09 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int	main(int argc, char **argv)
 		check_args(argc, argv);
 		args = prepare_args(argc, argv);
 		stack_a = parse_args_to_linked_list(args);
+		print_stack(stack_a);
 		sort_stack(&stack_a, &stack_b);
+		print_stack(stack_a);
+		free_stack(stack_a);
 	}
 	return (0);
 }

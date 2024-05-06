@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 12:44:16 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/06 15:47:32 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/06 17:01:29 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ long	ft_atoi(const char *str)
 		str++;
 		sign_exist = 1;
 	}
-	if (*str == '0')
+	if (*str < '0' || *str > '9')
 		return (0);
 	while (*str >= '0' && *str <= '9')
 	{
