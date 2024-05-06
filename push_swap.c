@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:29:21 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/03 14:29:16 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/06 12:35:39 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,15 @@ int	main(int argc, char **argv)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	args = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc > 1)
 	{
-		stack_a = NULL;
-		stack_b = NULL;
 		check_args(argc, argv);
 		args = prepare_args(argc, argv);
-		printf("Args: %p\n", args);
 		stack_a = parse_args_to_linked_list(args);
-		if (is_sorted(stack_a))
-		{
-			printf("Stack is sorted\n");
-		}
-		else
-		{
-			printf("Stack is not sorted\n");
-		}
-		printf("Stack_a: %p\n", stack_a);
-		print_stack(stack_a);
 		sort_stack(&stack_a, &stack_b);
-		printf("Stack_a: %p\n", stack_a);
-		print_stack(stack_a);
-		free_stack(stack_a);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:28:59 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/03 14:28:17 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/06 09:08:23 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	rrr(t_stack **stack_a, t_stack **stack_b);
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 void	sort_three(t_stack **stack_a, int size);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
+void	sort_beyond_five(t_stack **stack_a, t_stack **stack_b);
 int	find_min(t_stack *stack);
 int	find_max(t_stack *stack);
 
