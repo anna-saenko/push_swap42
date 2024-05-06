@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:30:29 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/02 15:30:35 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/06 15:39:59 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	**prepare_args(int argc, char **argv)
 	char	**args;
 	int		i;
 
+	if(argv[1] == NULL || argc == 1 || argv[1][0] == '\0')
+		return (NULL);
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else

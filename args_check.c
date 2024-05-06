@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:30:54 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/02 15:32:12 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/06 16:10:36 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,27 @@ static int	ft_isnum(char *arg)
 	}
 	return (1);
 }
-static int	is_double(int num, char **args, int i)
+static int	is_double(char **args)
 {
-	int	j;
-	int	temp;
+	int i;
+	int j;
 
-	j = 1;
-	while (j < i)
+	i = 0;
+	while (args[i] != NULL)
 	{
-		temp = ft_atoi(args[j]);
-		if (num == temp)
-			return (1);
-		j++;
+		j = i + 1;
+		while (args[j] != NULL)
+		{
+			if (ft_atoi(args[i]) == ft_atoi(args[j]))
+				return (1);
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }
 
-static int	is_too_big(int num)
+static int	is_too_big(long num)
 {
 	if (num > INT_MAX || num < INT_MIN)
 		return (1);
@@ -64,12 +68,22 @@ void	check_args(int argc, char **argv)
 	int		i;
 
 	args = prepare_args(argc, argv);
+	if (!args)
+		display_error();
 	i = 0;
+	if (is_double(args))
+	{
+		free_char_arr(args);
+		display_error();
+	}
 	while (args[i] != NULL)
 	{
 		num = ft_atoi(args[i]);
-		if (!ft_isnum(args[i]) || is_too_big(num) || is_double(num, args, i))
+		if (!ft_isnum(args[i]) || !num || is_too_big(num))
+		{
+			free_char_arr(args);
 			display_error();
+		}
 		i++;
 	}
 }
