@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:30:54 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/30 13:25:26 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/05/30 14:24:51 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ static int	ft_isnum(char *arg)
 
 	i = 0;
 	if (arg[i] == '-' || arg[i] == '+')
+	{
+		if (!arg[i + 1])
+			return (0);
 		i++;
+	}
 	while (arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
@@ -79,8 +83,9 @@ void	check_args(int argc, char **argv)
 	while (args[i] != NULL)
 	{
 		num = ft_atoi(args[i]);
-		if (!ft_isnum(args[i]) || !num || is_too_big(num))
+		if (!ft_isnum(args[i]) || is_too_big(num))
 		{
+			printf("num: %ld\n", num);
 			free_char_arr(args);
 			display_error();
 		}
