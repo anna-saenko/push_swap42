@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:28:51 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/03 14:48:46 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/06/06 15:44:16 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ void	ra(t_stack **stack_a)
 {
 	rotate_nodes(stack_a);
 	write(1, "ra\n", 3);
+	current_position(stack_a);
 }
 
 void	rb(t_stack **stack_b)
 {
 	rotate_nodes(stack_b);
 	write(1, "rb\n", 3);
+	current_position(stack_b);
 }
 
 void	rr(t_stack **stack_a, t_stack **stack_b)
@@ -47,4 +49,18 @@ void	rr(t_stack **stack_a, t_stack **stack_b)
 	rotate_nodes(stack_a);
 	rotate_nodes(stack_b);
 	write(1, "rr\n", 3);
+	current_position(stack_a);
+	current_position(stack_b);
+}
+
+void	rotate_both(t_stack **stack_a,
+					t_stack **stack_b,
+					t_stack *cheapest_node)
+{
+	while (*stack_b != cheapest_node->target_node && *stack_a != cheapest_node)
+	{
+		rr(stack_a, stack_b);
+	}
+	current_position(stack_a);
+	current_position(stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:30:29 by asaenko           #+#    #+#             */
-/*   Updated: 2024/05/06 17:04:56 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/06/03 15:15:23 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,12 @@ char	**prepare_args(int argc, char **argv)
 }
 
 
-static t_stack	*create_node(int value, int index, t_stack* prev)
+static t_stack	*create_node(int value, t_stack* prev)
 {
 	t_stack	*head;
 
 	head = (t_stack *)malloc(sizeof(t_stack));
 	head->value = value;
-	head->index = index;
 	head->prev = prev;
 	head->next = NULL;
 	if (prev)
@@ -62,12 +61,12 @@ t_stack	*parse_args_to_linked_list(char **args)
 	int		i;
 
 	i = 0;
-	head = create_node(ft_atoi(args[i]), i, NULL);
+	head = create_node(ft_atoi(args[i]), NULL);
 	prev_node = head;
 	++i;
 	while(args[i] != NULL)
 	{
-		cur_node = create_node(ft_atoi(args[i]), i, prev_node);
+		cur_node = create_node(ft_atoi(args[i]), prev_node);
 		prev_node = cur_node;
 		++i;
 	}
