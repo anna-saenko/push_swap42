@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: asaenko <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/02 15:29:07 by asaenko           #+#    #+#              #
+#    Updated: 2024/06/07 15:43:27 by asaenko          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = push_swap
 
 LIBFTDIR = libft
@@ -6,11 +18,13 @@ LIBFTNAME = libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g -O0 -DDEBUG
+CFLAGS = -Wall -Wextra -Werror
 
-SRCS = push_swap.c	check_args.c free_funcs.c	utils.c \
-		parse_args.c	push_ops.c	swap_ops.c	rotate_ops.c \
-		reverse_ops.c
+SRCS = push_swap.c	args_check.c	args_free.c	push_swap_general_utils.c \
+		args_parse.c	ops_push.c	ops_swap.c	ops_rotate.c \
+		ops_reverse.c	sort_algos.c	sort_five_utils.c \
+		sort_above_five_utils.c	sort_above_five_move_utils.c \
+		sort_above_five_data_utils.c
 
 OBJ = $(SRCS:.c=.o)
 

@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   args_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 15:29:21 by asaenko           #+#    #+#             */
-/*   Updated: 2024/06/07 15:03:14 by asaenko          ###   ########.fr       */
+/*   Created: 2024/06/07 15:26:36 by asaenko           #+#    #+#             */
+/*   Updated: 2024/06/07 15:26:38 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-
-int	main(int argc, char **argv)
+void	free_char_arr(char **arr)
 {
-	char	**args;
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	unsigned	i;
 
-	args = NULL;
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc == 1)
-		return (1);
-	if (argc > 1)
+	if (arr == NULL)
+		return;
+	i = 0;
+	while(arr[i] != NULL)
 	{
-		check_args(argc, argv);
-		args = prepare_args(argc, argv);
-		stack_a = parse_args_to_linked_list(args);
-		sort_stack(&stack_a, &stack_b);
-		free_stack(stack_a);
+		free(arr[i++]);
 	}
-	return (0);
+	free(arr);
+	arr = NULL;
+}
+
+void	free_stack(t_stack *stack)
+{
+	t_stack	*current = stack;
+
+	while (current != NULL)
+	{
+		free(current);
+		current = current->next;
+	}
+	stack = NULL;
 }
