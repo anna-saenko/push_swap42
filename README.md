@@ -41,4 +41,10 @@ The last element becomes the first one.
 __rrb (reverse rotate b)__: Shift down all elements of stack b by 1. The last element becomes the first one.
 __rrr__ : rra and rrb at the same time.
 
+**To check how the program works:**
 
+1. clone the repo 
+
+2. make
+
+3. ./push_swap "3 2 1"
