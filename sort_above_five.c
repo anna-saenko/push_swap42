@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 14:54:37 by asaenko           #+#    #+#             */
-/*   Updated: 2024/06/06 16:51:58 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/06/07 12:10:57 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,20 @@ void	current_position(t_stack **stack)
 	int	median;
 
 	i = 0;
+	if (!*stack)
+		return ;
 	median = stack_size(*stack) / 2;
 	while (*stack != NULL)
 	{
 		(*stack)->index = i;
-		if (i++ >= median)
+		if (i <= median)
 			(*stack)->above_median = true;
 		else
 			(*stack)->above_median = false;
 		if (!(*stack)->next)
 			break ;
 		(*stack) = (*stack)->next;
+		++i;
 	}
 	go_back_to_top(stack);
 }
@@ -88,7 +91,7 @@ void	current_position(t_stack **stack)
 void	set_cheapest(t_stack **stack)
 {
 	long	cheapest;
-	t_stack	*current;
+	t_stack	**cheapest_stack;
 
 	if (!*stack)
 		return ;
@@ -98,13 +101,13 @@ void	set_cheapest(t_stack **stack)
 		if ((*stack)->cost < cheapest)
 		{
 			cheapest = (*stack)->cost;
-			current = *stack;
+			cheapest_stack = stack;
 		}
 		if (!(*stack)->next)
 			break ;
 		(*stack) = (*stack)->next;
 	}
-	current->cheapest = true;
+	(*cheapest_stack)->cheapest = true;
 	go_back_to_top(stack);
 }
 
@@ -131,14 +134,14 @@ void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_name)
 	{
 		if (stack_name == 'a')
 		{
-			if ((*stack)->above_median)
+			if (top_node->above_median)
 				ra(stack);
 			else
 				rra(stack);
 		}
 		else
 		{
-			if ((*stack)->above_median)
+			if (top_node->above_median)
 				rb(stack);
 			else
 				rrb(stack);
@@ -160,8 +163,6 @@ void	sort_above_five_elements(t_stack **stack_a, t_stack **stack_b)
 	{
 		init_nodes_a(stack_a, stack_b);
 		move_a_to_b(stack_a, stack_b);
-		print_stack(*stack_a);
-		print_stack(*stack_b);
 	}
 	sort_three(stack_a, 3);
 	print_stack(*stack_a);
@@ -169,8 +170,6 @@ void	sort_above_five_elements(t_stack **stack_a, t_stack **stack_b)
 	{
 		init_nodes_b(stack_a, stack_b);
 		move_b_to_a(stack_a, stack_b);
-		print_stack(*stack_a);
-		print_stack(*stack_b);
 	}
 	current_position(stack_a);
 	min_to_top(stack_a);

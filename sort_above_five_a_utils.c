@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 18:16:05 by asaenko           #+#    #+#             */
-/*   Updated: 2024/06/06 15:03:49 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/06/07 12:11:17 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	set_target_a(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	**current_b;
 	t_stack	**target_node;
-	t_stack *temp;
 	long	best_match;
 
 	target_node = NULL;
@@ -26,12 +25,11 @@ void	set_target_a(t_stack **stack_a, t_stack **stack_b)
 		best_match = LONG_MIN;
 		while (*current_b != NULL)
 		{
-			temp = *current_b;
 			if ((*current_b)->value < (*stack_a)->value
 				&& (*current_b)->value > best_match)
 			{
 				best_match = (*current_b)->value;
-				target_node = &temp;
+				target_node = current_b;
 			}
 			if (!(*current_b)->next)
 				break ;
@@ -56,7 +54,7 @@ void	cost_analysis_a(t_stack **stack_a, t_stack **stack_b)
 
 	size_a = stack_size(*stack_a);
 	size_b = stack_size(*stack_b);
-	while (*stack_a)
+	while (*stack_a != NULL)
 	{
 		(*stack_a)->cost = (*stack_a)->index;
 		if (!(*stack_a)->above_median)

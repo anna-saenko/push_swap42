@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:29:21 by asaenko           #+#    #+#             */
-/*   Updated: 2024/06/03 15:17:39 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/06/07 11:21:48 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 	args = NULL;
 	stack_a = NULL;
 	stack_b = NULL;
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
 	if (argc > 1)
 	{
 		check_args(argc, argv);

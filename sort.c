@@ -29,12 +29,11 @@ void	sort_three(t_stack **stack_a, int size)
 	if (is_sorted(*stack_a))
 		return ;
 	if (size == 2)
-	{
 		sa(stack_a);
-	}
 	else if (size == 3)
 	{
-		if ((*stack_a)->next->next->value > (*stack_a)->value && (*stack_a)->value > (*stack_a)->next->value)
+		if ((*stack_a)->next->next->value > (*stack_a)->value
+			&& (*stack_a)->value > (*stack_a)->next->value)
 		{
 			sa(stack_a);
 		}

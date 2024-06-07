@@ -6,7 +6,7 @@
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 18:17:17 by asaenko           #+#    #+#             */
-/*   Updated: 2024/06/06 16:43:39 by asaenko          ###   ########.fr       */
+/*   Updated: 2024/06/07 12:45:24 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	set_target_b(t_stack **stack_a, t_stack **stack_b)
 	{
 		current_a = stack_a;
 		best_match = LONG_MAX;
-		while (*current_a)
+		while (*current_a != NULL)
 		{
 			if ((*current_a)->value > (*stack_b)->value
 				&& (*current_a)->value < best_match)
@@ -74,8 +74,6 @@ void init_nodes_b(t_stack **stack_a, t_stack **stack_b)
 	current_position(stack_a);
 	current_position(stack_b);
 	set_target_b(stack_a, stack_b);
-	cost_analysis_b(stack_b, stack_a);
-	set_cheapest(stack_b);
 }
 
 void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
