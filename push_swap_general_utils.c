@@ -1,45 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*   push_swap_general_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/30 15:04:20 by asaenko           #+#    #+#             */
-/*   Updated: 2024/06/06 10:36:57 by asaenko          ###   ########.fr       */
+/*   Created: 2024/05/02 12:08:13 by asaenko           #+#    #+#             */
+/*   Updated: 2024/06/07 15:33:16 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min(t_stack *stack)
+int is_sorted(t_stack *head)
 {
 	t_stack	*current;
-	int		min;
 
-	min = INT_MAX;
-	current = stack;
-	while (current != NULL)
+	if (head == NULL)
 	{
-		if (current->value < min)
-			min = current->value;
+		return 0;
+	}
+	current = head;
+	while (current->next != NULL)
+	{
+		if (current->value > current->next->value)
+		{
+			return 0;
+		}
 		current = current->next;
 	}
-	return (min);
+	return 1;
 }
 
-int	find_max(t_stack *stack)
+int	stack_size(t_stack *head)
 {
 	t_stack	*current;
-	int		max;
+	int		size;
 
-	max = INT_MIN;
-	current = stack;
+	size = 0;
+	if (head == NULL)
+	{
+		return 0;
+	}
+	current = head;
 	while (current != NULL)
 	{
-		if (current->value > max)
-			max = current->value;
+		size++;
 		current = current->next;
 	}
-	return (max);
+	return size;
 }

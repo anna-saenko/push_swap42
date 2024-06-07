@@ -1,64 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   sort_five_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaenko <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 12:08:13 by asaenko           #+#    #+#             */
-/*   Updated: 2024/06/06 15:40:47 by asaenko          ###   ########.fr       */
+/*   Created: 2024/05/30 14:48:06 by asaenko           #+#    #+#             */
+/*   Updated: 2024/06/07 15:34:06 by asaenko          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_stack *stack)
-{
-	t_stack	*current = stack;
-
-	while (current != NULL)
-	{
-		printf("[%d]- %d -> ", current->index, current->value);
-		current = current->next;
-	}
-	printf("\n");
-}
-
-int is_sorted(t_stack *head)
+int	find_min(t_stack *stack)
 {
 	t_stack	*current;
+	int		min;
 
-	if (head == NULL)
-	{
-		return 0;
-	}
-	current = head;
-	while (current->next != NULL)
-	{
-		if (current->value > current->next->value)
-		{
-			return 0;
-		}
-		current = current->next;
-	}
-	return 1;
-}
-
-int	stack_size(t_stack *head)
-{
-	t_stack	*current;
-	int		size;
-
-	size = 0;
-	if (head == NULL)
-	{
-		return 0;
-	}
-	current = head;
+	min = INT_MAX;
+	current = stack;
 	while (current != NULL)
 	{
-		size++;
+		if (current->value < min)
+			min = current->value;
 		current = current->next;
 	}
-	return size;
+	return (min);
 }
+
+int	find_max(t_stack *stack)
+{
+	t_stack	*current;
+	int		max;
+
+	max = INT_MIN;
+	current = stack;
+	while (current != NULL)
+	{
+		if (current->value > max)
+			max = current->value;
+		current = current->next;
+	}
+	return (max);
+}
+int	shortest_path_to_top(t_stack *stack, int value)
+{
+	t_stack	*current;
+	int		i;
+
+	i = 0;
+	current = stack;
+	while (current != NULL)
+	{
+		if (current->value == value)
+			break ;
+		i++;
+		current = current->next;
+	}
+	if (i < stack_size(stack) / 2)
+		return (1);
+	return (0);
+}
+
